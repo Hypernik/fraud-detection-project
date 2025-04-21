@@ -137,3 +137,5 @@ dist
 backend/lib/
 backend/lib64/python3.12/site-packages
 backend/bin
+backend/lib64
+backend/pyvenv.cfg
