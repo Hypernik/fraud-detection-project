@@ -4,40 +4,35 @@ import pickle
 
 app = Flask(__name__)
 
-# Load the RandomForestClassifier model
+# Load your model (example: RandomForestClassifier)
 with open("fraud_detection_model.pkl", "rb") as f:
     model = pickle.load(f)
 
-# Example: The feature order expected by the model
-feature_names = [
-    'Unnamed: 0', 'trans_date_trans_time', 'cc_num', 'merchant', 'category',
-    'amt', 'first', 'last', 'gender', 'street', 'city', 'state', 'zip',
-    'lat', 'long', 'city_pop', 'job', 'dob', 'trans_num', 'unix_time',
-    'merch_lat', 'merch_long', 'merch_zipcode'
-]
-
 @app.route("/predict", methods=["POST"])
 def predict():
+    data = request.get_json()
+
+    # Make sure all expected features are provided
+    expected_features = [
+        'Unnamed: 0', 'trans_date_trans_time', 'cc_num', 'merchant', 'category',
+        'amt', 'first', 'last', 'gender', 'street', 'city', 'state', 'zip', 'lat',
+        'long', 'city_pop', 'job', 'dob', 'trans_num', 'unix_time', 'merch_lat',
+        'merch_long', 'merch_zipcode'
+    ]
+
+    input_data = [data.get(feature, None) for feature in expected_features]
+
+    if None in input_data:
+        return jsonify({"error": "Missing one or more required fields"}), 400
+
+    # Convert input to the shape expected by the model
+    input_array = np.array([input_data])
+
     try:
-        data = request.get_json()['features']
-
-        print(data)
-
-        # Extract and order input features as per training
-        input_data = [data[feature] for feature in feature_names]
-
-        # Convert to numpy array and reshape
-        input_array = np.array(input_data).reshape(1, -1)
-
-        # Make prediction
-        prediction = model.predict(input_array)[0]
-        print(data)
-        return jsonify({"prediction": str(prediction)})
-
-    except KeyError as e:
-        return jsonify({"error": f"Missing input field: {e}"}), 400
+        prediction = model.predict(input_array)
+        return jsonify({"prediction": prediction.tolist()})
     except Exception as e:
-        return jsonify({"error": f"Error during prediction: {str(e)}"}), 500
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
     app.run(debug=True)
