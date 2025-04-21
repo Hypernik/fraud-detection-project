@@ -135,5 +135,5 @@ dist
 .yarn/install-state.gz
 .pnp.*
 backend/lib/
-backend/lib64/
+backend/lib64/python3.12/site-packages
 backend/bin
