@@ -149,3 +149,5 @@ model_train/label_encoders.pkl
 .gitignore
 backend/feature_columns.pkl
 backend/label_encoders.pkl
+
+.pkl
