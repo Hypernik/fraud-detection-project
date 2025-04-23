@@ -151,3 +151,4 @@ backend/feature_columns.pkl
 backend/label_encoders.pkl
 
 .pkl
+backend/fraud_detection_model.pkl
