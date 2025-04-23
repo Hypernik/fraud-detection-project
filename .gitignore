@@ -153,3 +153,4 @@ backend/label_encoders.pkl
 .pkl
 backend/fraud_detection_model.pkl
 Scripts
+scaler.pkl

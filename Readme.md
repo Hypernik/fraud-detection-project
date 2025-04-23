@@ -16,3 +16,21 @@ or
 > Scripts\activate.bat
 > pip install -r requirements.txt
 > python app.py
+
+--------------------------------
+Final steps to run the project
+--------------------------------
+
+In windows double-click on the
+"run_backend.bat" file to run the python backend
+"run_frontend.bat" file to run the React frontend
+
+or
+
+"run_all.bat" file to run both of them
+
+Place the following files inside backend folder
+1. feature_columns.pkl
+2. fraud_detection_model.pkl
+3. label_encoder.pkl
+4. scaler.pkl

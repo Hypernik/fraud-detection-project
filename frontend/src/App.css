@@ -14,74 +14,67 @@ body {
   padding: 2rem;
   border-radius: 10px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+.app-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
 }
 
-.title {
+h1 {
   text-align: center;
-  margin-bottom: 2rem;
   color: #333;
-}
-
-.generate-button,
-.submit-button {
-  background-color: #007bff;
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  margin-bottom: 1rem;
-  font-size: 1rem;
-}
-
-.generate-button:hover,
-.submit-button:hover {
-  background-color: #0056b3;
+  margin-bottom: 30px;
 }
 
 .form-group {
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
 }
 
-.label {
+.form-group label {
   display: block;
+  margin-bottom: 6px;
   font-weight: bold;
-  margin-bottom: 0.5rem;
-  color: #444;
+  color: #555;
 }
 
-.input {
+.form-group input {
   width: 100%;
-  padding: 0.6rem;
+  padding: 10px;
+  border-radius: 8px;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1rem;
+  font-size: 14px;
 }
 
-.prediction {
-  margin-top: 2rem;
-  font-size: 1.2rem;
-  font-weight: bold;
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #0066cc;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:hover {
+  background-color: #004999;
+}
+
+.prediction-result {
+  margin-top: 30px;
+  padding: 20px;
+  border-radius: 8px;
   text-align: center;
-  padding: 1rem;
-  border-radius: 6px;
-}
-
-.prediction.fraud {
-  background-color: #ffebeb;
-  color: #d8000c;
-  border: 1px solid #d8000c;
-}
-
-.prediction.legit {
-  background-color: #e7f9ed;
-  color: #2e7d32;
-  border: 1px solid #2e7d32;
-}
-
-.error {
-  margin-top: 1rem;
-  color: #d8000c;
-  text-align: center;
+  font-size: 18px;
+  background-color: #f7f7f7;
   font-weight: bold;
 }
