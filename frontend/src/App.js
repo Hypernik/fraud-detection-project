@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "./App.css";
 
-// Example categorical values based on training set
 const exampleValues = {
   merchant: ["merchant_1", "merchant_2", "merchant_3"],
   category: ["shopping", "food", "gas_transport", "entertainment"],
@@ -21,7 +21,7 @@ const generateRandomData = () => {
   const dob = new Date(now.getFullYear() - (20 + Math.floor(Math.random() * 40)), Math.random() * 12, Math.random() * 28);
 
   return {
-    trans_date_trans_time: now.toISOString(), // ISO string will be converted to UNIX in backend
+    trans_date_trans_time: now.toISOString(),
     merchant: getRandom(exampleValues.merchant),
     category: getRandom(exampleValues.category),
     amt: (Math.random() * 1000).toFixed(2),
@@ -71,38 +71,34 @@ const App = () => {
   };
 
   return (
-    <div style={{ padding: "2rem", maxWidth: "700px", margin: "auto" }}>
-      <h2>Fraud Detection Form</h2>
-      <button onClick={handleRandomGenerate} style={{ marginBottom: "1rem", padding: "0.5rem 1rem" }}>
+    <div className="container">
+      <h2 className="title">Credit Card Fraud Detection</h2>
+      <button className="generate-button" onClick={handleRandomGenerate}>
         Generate Random Transaction
       </button>
-      <form onSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleSubmit}>
         {Object.keys(generateRandomData()).map((field) => (
-          <div key={field} style={{ marginBottom: "1rem" }}>
-            <label style={{ display: "block", fontWeight: "bold" }}>{field}</label>
+          <div key={field} className="form-group">
+            <label className="label">{field}</label>
             <input
               type="text"
+              className="input"
               value={formData[field] || ""}
               onChange={(e) => setFormData({ ...formData, [field]: e.target.value })}
               required
-              style={{ width: "100%", padding: "0.5rem" }}
             />
           </div>
         ))}
-        <button type="submit" style={{ padding: "0.7rem 1.5rem" }}>
+        <button className="submit-button" type="submit">
           Submit
         </button>
       </form>
       {prediction && (
-        <div style={{ marginTop: "1.5rem", fontSize: "1.2rem", color: prediction.includes("Fraud") ? "red" : "green" }}>
+        <div className={`prediction ${prediction.includes("Fraud") ? "fraud" : "legit"}`}>
           Prediction: {prediction}
         </div>
       )}
-      {error && (
-        <div style={{ marginTop: "1rem", color: "crimson" }}>
-          {error}
-        </div>
-      )}
+      {error && <div className="error">{error}</div>}
     </div>
   );
 };

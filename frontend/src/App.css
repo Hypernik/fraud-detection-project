@@ -1,46 +1,87 @@
-.App {
+/* App.css */
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6f8;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 2rem auto;
+  background: white;
   padding: 2rem;
-  max-width: 900px;
-  margin: auto;
-  font-family: sans-serif;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
-form {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+.title {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #333;
 }
 
-.form-group {
-  flex: 1 1 45%;
-  display: flex;
-  flex-direction: column;
-}
-
-input {
-  padding: 0.5rem;
-  font-size: 1rem;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
-button {
-  padding: 0.75rem 1.5rem;
-  margin-top: 1rem;
-  font-size: 1rem;
+.generate-button,
+.submit-button {
   background-color: #007bff;
   color: white;
+  padding: 0.75rem 1.5rem;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
+  margin-bottom: 1rem;
+  font-size: 1rem;
 }
 
-button:hover {
+.generate-button:hover,
+.submit-button:hover {
   background-color: #0056b3;
 }
 
-.result {
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #444;
+}
+
+.input {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.prediction {
   margin-top: 2rem;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 6px;
+}
+
+.prediction.fraud {
+  background-color: #ffebeb;
+  color: #d8000c;
+  border: 1px solid #d8000c;
+}
+
+.prediction.legit {
+  background-color: #e7f9ed;
+  color: #2e7d32;
+  border: 1px solid #2e7d32;
+}
+
+.error {
+  margin-top: 1rem;
+  color: #d8000c;
+  text-align: center;
   font-weight: bold;
 }
