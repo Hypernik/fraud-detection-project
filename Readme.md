@@ -2,8 +2,11 @@ The following project for Credit card fraud detection contains two parts
 
 Fronted running -> (in one seperate command line)
 > cd frontend
-open frontend folder in command prompt
+
+ open frontend folder in command prompt
+ 
 > npm install
+
 > npm start
 
 backend running -> (in another seperate command line)
